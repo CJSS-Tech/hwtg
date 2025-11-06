@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Telegram中文资源导航｜产品&服务网站信息架构</title>
+  <title>Telegram中文资源导航</title>
   <meta name="description" content="Telegram 中文资源导航：频道、群组、机器人、行业交流、海外商机、求职招聘、频道主专区等聚合入口。" />
   <meta name="keywords" content="Telegram, 中文, 频道, 群组, 机器人, 招聘, 行业交流群, 海外商机, SEO 导航" />
   <meta name="robots" content="index,follow" />
