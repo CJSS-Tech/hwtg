@@ -42,11 +42,23 @@ window.addEventListener('scroll', () => {
 // 加载资源数据
 async function loadResources() {
     try {
+        console.log('开始加载资源...');
         const response = await fetch('resources.json');
+        console.log('Response status:', response.status);
+        
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
         const data = await response.json();
+        console.log('资源数据加载成功:', data);
         renderResources(data);
     } catch (error) {
         console.error('加载资源失败:', error);
+        // 显示错误提示
+        document.querySelectorAll('.resource-grid').forEach(grid => {
+            grid.innerHTML = '<div class="resource-card"><h3>⚠️ 资源加载失败</h3><p>请稍后刷新页面重试</p></div>';
+        });
     }
 }
 
