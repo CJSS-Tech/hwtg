@@ -108,11 +108,19 @@ function createResourceCard(resource) {
     const card = document.createElement('div');
     card.className = 'resource-card';
     
+    // 构建标签HTML
+    let tagsHtml = '';
+    if (resource.tags && resource.tags.length > 0) {
+        const tagsElements = resource.tags.map(tag => `<span class="resource-tag">${tag}</span>`).join('');
+        tagsHtml = `<div class="resource-tags">${tagsElements}</div>`;
+    }
+    
     card.innerHTML = `
+        ${tagsHtml}
         <h3>${resource.title}</h3>
         <p>${resource.description}</p>
-        ${resource.subscribers ? `<p class="text-sm text-gray-500">👥 ${resource.subscribers}</p>` : ''}
-        ${resource.members ? `<p class="text-sm text-gray-500">👥 ${resource.members}</p>` : ''}
+        ${resource.subscribers ? `<p class="text-sm text-gray-500">👥 订阅者: ${resource.subscribers}</p>` : ''}
+        ${resource.members ? `<p class="text-sm text-gray-500">👥 群成员: ${resource.members}</p>` : ''}
         ${resource.username ? `<p class="text-sm text-gray-500">用户名: ${resource.username}</p>` : ''}
         ${resource.contact ? `<p class="text-sm text-gray-500">联系: ${resource.contact}</p>` : ''}
         <a href="${resource.link}" class="btn" target="_blank" rel="noopener">访问</a>
