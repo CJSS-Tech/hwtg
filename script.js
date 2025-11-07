@@ -115,15 +115,31 @@ function createResourceCard(resource, categoryId) {
         tagsHtml = `<div class="resource-tags">${tagsElements}</div>`;
     }
     
-    // 根据分类决定成员数量的显示文字
-    const membersLabel = categoryId === 'bots' ? '活跃用户' : '群成员';
+    // 智能显示成员数量标签
+    let membersHtml = '';
+    if (resource.members) {
+        let label = '群成员'; // 默认为群成员
+        
+        if (categoryId === 'bots') {
+            label = '活跃用户';
+        } else if (resource.subscribers || categoryId === 'channels') {
+            // 如果有subscribers字段或者属于频道分类，不显示members
+            membersHtml = '';
+        } else {
+            label = '群成员';
+        }
+        
+        if (label) {
+            membersHtml = `<div class="resource-stats">👥 ${label}: <span class="stats-number">${resource.members}</span></div>`;
+        }
+    }
     
     card.innerHTML = `
         ${tagsHtml}
         <h3>${resource.title}</h3>
         <p class="resource-description">${resource.description}</p>
         ${resource.subscribers ? `<div class="resource-stats">👥 订阅者: <span class="stats-number">${resource.subscribers}</span></div>` : ''}
-        ${resource.members ? `<div class="resource-stats">👥 ${membersLabel}: <span class="stats-number">${resource.members}</span></div>` : ''}
+        ${membersHtml}
         ${resource.username ? `<div class="resource-info">用户名: ${resource.username}</div>` : ''}
         ${resource.contact ? `<div class="resource-info">联系: ${resource.contact}</div>` : ''}
         ${resource.link ? 
