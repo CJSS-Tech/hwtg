@@ -302,6 +302,22 @@ body {
     transform: scale(1.05);
 }
 
+/* 申请加入按钮特殊样式 */
+.btn-apply {
+    background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+    position: relative;
+}
+
+.btn-apply:hover {
+    background: linear-gradient(135deg, #ee5a24, #ff6b6b);
+    transform: scale(1.05);
+}
+
+.btn-apply::before {
+    content: "🔒 ";
+    margin-right: 0.25rem;
+}
+
 /* 页脚 */
 .footer {
     background-color: var(--dark-color);
