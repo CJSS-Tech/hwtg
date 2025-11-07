@@ -126,24 +126,19 @@
         {
           "title": "黑客群",
           "description": "黑客技术交流、资源共享、项目合作、技术支持",
-          "link": "https://t.me/group_name",
-          "username": "@group_name",
           "members": "300+",
           "tags": ["🔐网络安全"]
         },
         {
           "title": "站长群",
           "description": "站长交流、资源分享、技术支持",
-          "link": "https://t.me/channel_name",
-          "username": "@channel_name",
-          "members": "2K+ 成员/ 300+ 在线 📈",
+          "members": "2K+ 成员/ 💬300+ 在线 趋势📈",
           "tags": ["🚀SEO"]
         },
         {
           "title": "美工搭建群",
           "description": "美工设计、资源分享、技术支持",
           "link": "https://t.me/service_name",
-          "username": "@service_name",
           "members": "150+",
           "tags": ["🔧服务工具"]
         },
@@ -151,7 +146,6 @@
           "title": "车队资源群",
           "description": "手机口 、app跑分、招车/找料、快递代发、 租各种号、苹果id贷、代打聊手、招刷手 资源对接",
           "link": "https://t.me/resource_name",
-          "username": "@resource_name",
           "members":"1K+ 成员/ 200+ 在线 📈",
           "tags": ["🤝资源对接"]
         },

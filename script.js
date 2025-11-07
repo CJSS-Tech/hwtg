@@ -118,11 +118,11 @@ function createResourceCard(resource) {
     card.innerHTML = `
         ${tagsHtml}
         <h3>${resource.title}</h3>
-        <p>${resource.description}</p>
-        ${resource.subscribers ? `<p class="text-sm text-gray-500">👥 订阅者: ${resource.subscribers}</p>` : ''}
-        ${resource.members ? `<p class="text-sm text-gray-500">👥 群成员: ${resource.members}</p>` : ''}
-        ${resource.username ? `<p class="text-sm text-gray-500">用户名: ${resource.username}</p>` : ''}
-        ${resource.contact ? `<p class="text-sm text-gray-500">联系: ${resource.contact}</p>` : ''}
+        <p class="resource-description">${resource.description}</p>
+        ${resource.subscribers ? `<div class="resource-stats">👥 订阅者: <span class="stats-number">${resource.subscribers}</span></div>` : ''}
+        ${resource.members ? `<div class="resource-stats">👥 群成员: <span class="stats-number">${resource.members}</span></div>` : ''}
+        ${resource.username ? `<div class="resource-info">用户名: ${resource.username}</div>` : ''}
+        ${resource.contact ? `<div class="resource-info">联系: ${resource.contact}</div>` : ''}
         <a href="${resource.link}" class="btn" target="_blank" rel="noopener">访问</a>
     `;
     

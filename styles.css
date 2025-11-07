@@ -226,6 +226,37 @@ body {
     line-height: 1.8;
 }
 
+.resource-description {
+    color: #666;
+    margin-bottom: 1rem;
+    line-height: 1.8;
+}
+
+/* 资源统计信息样式 */
+.resource-stats {
+    color: #555;
+    font-size: 0.9rem;
+    margin-bottom: 0.75rem;
+    padding: 0.5rem;
+    background-color: #f8f9fa;
+    border-radius: 6px;
+    border-left: 3px solid var(--primary-color);
+    font-weight: 500;
+}
+
+.stats-number {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+/* 资源附加信息样式 */
+.resource-info {
+    color: #777;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+    padding: 0.25rem 0;
+}
+
 .resource-card p:last-of-type {
     margin-bottom: 1.5rem;
 }
