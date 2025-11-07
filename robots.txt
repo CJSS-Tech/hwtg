@@ -1,0 +1,58 @@
+# robots.txt for Telegram中文资源导航
+# https://cjss-tech.github.io/hwtg/
+
+# 允许所有搜索引擎抓取
+User-agent: *
+Allow: /
+
+# 禁止抓取的路径（如果有）
+# Disallow: /private/
+# Disallow: /temp/
+
+# 网站地图位置
+Sitemap: https://cjss-tech.github.io/hwtg/sitemap.xml
+
+# 针对主要搜索引擎的特定配置
+
+# Google
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+# Google图片
+User-agent: Googlebot-Image
+Allow: /
+
+# Bing
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 0
+
+# Baidu (百度)
+User-agent: Baiduspider
+Allow: /
+Crawl-delay: 1
+
+# Yandex
+User-agent: Yandex
+Allow: /
+
+# 360搜索
+User-agent: 360Spider
+Allow: /
+Crawl-delay: 1
+
+# 搜狗
+User-agent: Sogou web spider
+Allow: /
+Crawl-delay: 1
+
+# 禁止恶意爬虫
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /

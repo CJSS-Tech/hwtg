@@ -52,6 +52,20 @@ async function loadResources() {
         
         const data = await response.json();
         console.log('资源数据加载成功:', data);
+        
+        // 添加 lastmod 时间戳到页面（用于 SEO）
+        if (data.updateTime) {
+            const footer = document.querySelector('.footer');
+            if (footer && !document.getElementById('last-updated')) {
+                const updateInfo = document.createElement('p');
+                updateInfo.id = 'last-updated';
+                updateInfo.style.fontSize = '0.85em';
+                updateInfo.style.color = '#666';
+                updateInfo.innerHTML = `<time datetime="${data.updateTime}">最后更新: ${data.updateTime}</time>`;
+                footer.querySelector('.container').appendChild(updateInfo);
+            }
+        }
+        
         renderResources(data);
     } catch (error) {
         console.error('加载资源失败:', error);
@@ -108,10 +122,14 @@ function createResourceCard(resource, categoryId) {
     const card = document.createElement('div');
     card.className = 'resource-card';
     
+    // 添加 Schema.org 微数据
+    card.setAttribute('itemscope', '');
+    card.setAttribute('itemtype', 'https://schema.org/Product');
+    
     // 构建标签HTML
     let tagsHtml = '';
     if (resource.tags && resource.tags.length > 0) {
-        const tagsElements = resource.tags.map(tag => `<span class="resource-tag">${tag}</span>`).join('');
+        const tagsElements = resource.tags.map(tag => `<span class="resource-tag" itemprop="keywords">${tag}</span>`).join('');
         tagsHtml = `<div class="resource-tags">${tagsElements}</div>`;
     }
     
@@ -136,15 +154,15 @@ function createResourceCard(resource, categoryId) {
     
     card.innerHTML = `
         ${tagsHtml}
-        <h3>${resource.title}</h3>
-        <p class="resource-description">${resource.description}</p>
+        <h3 itemprop="name">${resource.title}</h3>
+        <p class="resource-description" itemprop="description">${resource.description}</p>
         ${resource.subscribers ? `<div class="resource-stats">👥 订阅者: <span class="stats-number">${resource.subscribers}</span></div>` : ''}
         ${membersHtml}
         ${resource.username ? `<div class="resource-info">用户名: ${resource.username}</div>` : ''}
         ${resource.contact ? `<div class="resource-info">联系: ${resource.contact}</div>` : ''}
         ${resource.link ? 
-            `<a href="${resource.link}" class="btn" target="_blank" rel="noopener">${resource.buttonText || '访问'}</a>` :
-            `<a href="https://t.me/hwkf" class="btn btn-apply" target="_blank" rel="noopener">申请加入</a>`
+            `<a href="${resource.link}" class="btn" target="_blank" rel="noopener noreferrer" itemprop="url">${resource.buttonText || '访问'}</a>` :
+            `<a href="https://t.me/hwkf" class="btn btn-apply" target="_blank" rel="noopener noreferrer">申请加入</a>`
         }
     `;
     
