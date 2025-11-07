@@ -83,7 +83,7 @@ function renderResources(data) {
 
                     // 渲染该子分类下的资源
                     subcategory.resources.forEach(resource => {
-                        const card = createResourceCard(resource);
+                        const card = createResourceCard(resource, category.id);
                         container.appendChild(card);
                     });
                 }
@@ -92,7 +92,7 @@ function renderResources(data) {
             // 没有二级分类，直接渲染资源
             if (category.resources && category.resources.length > 0) {
                 category.resources.forEach(resource => {
-                    const card = createResourceCard(resource);
+                    const card = createResourceCard(resource, category.id);
                     container.appendChild(card);
                 });
             }
@@ -104,7 +104,7 @@ function renderResources(data) {
 }
 
 // 创建资源卡片
-function createResourceCard(resource) {
+function createResourceCard(resource, categoryId) {
     const card = document.createElement('div');
     card.className = 'resource-card';
     
@@ -115,12 +115,15 @@ function createResourceCard(resource) {
         tagsHtml = `<div class="resource-tags">${tagsElements}</div>`;
     }
     
+    // 根据分类决定成员数量的显示文字
+    const membersLabel = categoryId === 'bots' ? '活跃用户' : '群成员';
+    
     card.innerHTML = `
         ${tagsHtml}
         <h3>${resource.title}</h3>
         <p class="resource-description">${resource.description}</p>
         ${resource.subscribers ? `<div class="resource-stats">👥 订阅者: <span class="stats-number">${resource.subscribers}</span></div>` : ''}
-        ${resource.members ? `<div class="resource-stats">👥 群成员: <span class="stats-number">${resource.members}</span></div>` : ''}
+        ${resource.members ? `<div class="resource-stats">👥 ${membersLabel}: <span class="stats-number">${resource.members}</span></div>` : ''}
         ${resource.username ? `<div class="resource-info">用户名: ${resource.username}</div>` : ''}
         ${resource.contact ? `<div class="resource-info">联系: ${resource.contact}</div>` : ''}
         ${resource.link ? 
