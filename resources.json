@@ -342,8 +342,9 @@
       "resources": [
         {
           "title": "Telegram广告投放服务",
-          "description": "覆盖20万+人群，专业广告投放与推广服务，助力品牌快速提升曝光与转化。",
-          "link": "https://t.me/hwkf"
+          "description": "覆盖100万+人群，专业广告投放与推广服务，助力品牌快速提升曝光与转化。",
+          "link": "https://t.me/hwkf",
+          "buttonText": "联系投放广告"
         }
       ]
     }

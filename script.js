@@ -124,7 +124,7 @@ function createResourceCard(resource) {
         ${resource.username ? `<div class="resource-info">用户名: ${resource.username}</div>` : ''}
         ${resource.contact ? `<div class="resource-info">联系: ${resource.contact}</div>` : ''}
         ${resource.link ? 
-            `<a href="${resource.link}" class="btn" target="_blank" rel="noopener">访问</a>` :
+            `<a href="${resource.link}" class="btn" target="_blank" rel="noopener">${resource.buttonText || '访问'}</a>` :
             `<a href="https://t.me/hwkf" class="btn btn-apply" target="_blank" rel="noopener">申请加入</a>`
         }
     `;
