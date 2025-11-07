@@ -12,7 +12,7 @@
           "resources": [
             {
               "title": "海外吃瓜 @hwcg",
-              "description": "热点追踪｜全球海外华人新闻 ｜黑料爆料｜东南亚大事件 ｜黑料爆料｜东南亚大事件 ｜缅甸大事件 ｜缅甸大事件｜泰国大事件",
+              "description": "热点追踪｜全球海外华人新闻 ｜黑料爆料｜东南亚大事件",
               "link": "https://t.me/hwcg",
               "subscribers": "10K+",
               "tags": ["🔥热点追踪", "📰海外华人"]
@@ -31,7 +31,7 @@
             },
             {
               "title": "什么值得读（海量书籍｜免费书籍｜编程入门）",
-              "description": "收录各大平台值得一读的优质书籍，只为分享真正有价值的知识与思考。涵盖编程、经济学原理、医疗健康、企业运营、心灵修行 等多个领域。欢迎订阅，与我们一起每天读一点，进步一点 👏",
+              "description": "收录各大平台值得一读的优质书籍，只为分享真正有价值的知识与思考。涵盖编程、经济学原理、医疗健康、企业运营、心灵修行等多个领域。",
               "link": "https://t.me/dianzishu007",
               "subscribers": "3K+",
               "tags": ["📚编程学习", "💡知识分享"]
@@ -92,6 +92,25 @@
               "link": "https://t.me/CJCryptoHub",
               "subscribers": "1K+",
               "tags": ["💰数字货币", "📊投资分析"]
+            }
+          ]
+        },
+        {
+          "name": "🤖AI&科技前沿",
+          "resources": [
+            {
+              "title": "AI中文社区",
+              "description": "聚焦 ChatGPT、DeepSeek、Gemini、Copilot、Claude——分享实用提示词、进阶技巧与全球 AI 最新动态",
+              "link": "https://t.me/AINewsUpdates",
+              "subscribers": "250+",
+              "tags": ["🚀科技创新"]
+            },
+            {
+              "title": "AI作品展示·提示词分享",
+              "description": "📌 探索并发现 AI艺术、AI摄影、AI设计、数字插画, 分享你的作品，获取反馈，并出售创作",
+              "link": "https://t.me/ailibrarya",
+              "subscribers": "50+",
+              "tags": ["🤖人工智能"]
             }
           ]
         },
@@ -158,6 +177,13 @@
           "description": "TRX能量兑换，资源对接交流",
           "members": "1K+ 成员  💬100+ 在线 趋势📈",
           "tags": ["💰数字货币"]
+        },
+        {
+          "title": "更多行业交流群",
+          "description": "一键添加更多行业交流群",
+          "link": "https://t.me/addlist/qupdjqwWZCc0MDA1",
+          "members": "50+ 交流群",
+          "tags": ["🗄️一键收藏"]
         }
       ]
     },
@@ -313,13 +339,13 @@
       "hasSubcategories": false,
       "resources": [
         {
-          "title": "chaU",
+          "title": "@chaU 查U",
           "description": "USDT地址资金变动监控&提醒，兑换TRX能量",
           "link": "https://t.me/chau",
            "members": "54K+/月"
         },
         {
-          "title": "@chaoji超级搜索",
+          "title": "@chaoji 超级搜索",
           "description": "搜索中文群组，频道，涵盖新闻资讯、吃瓜爆料、音乐、电影、成人、财经、牛人故事、科技等各个领域",
           "link": "https://t.me/chaoji",
           "members": "23K+/月"
