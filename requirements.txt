@@ -1,0 +1,5 @@
+# 必须依赖
+playwright>=1.40.0
+
+# 可选：用于环境变量管理
+python-dotenv>=1.0.0

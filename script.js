@@ -133,31 +133,41 @@ function createResourceCard(resource, categoryId) {
         tagsHtml = `<div class="resource-tags">${tagsElements}</div>`;
     }
     
-    // 智能显示成员数量标签
+    // 构建订阅者数量显示（频道）- 直接显示实际数字
+    let subscribersHtml = '';
+    if (resource.subscribers !== undefined) {
+        subscribersHtml = `<div class="resource-stats">👥 订阅者: <span class="stats-number">${resource.subscribers}</span></div>`;
+    }
+    
+    // 构建群组成员信息（群组）- 直接显示实际数字
     let membersHtml = '';
-    if (resource.members) {
-        let label = '群成员'; // 默认为群成员
+    if (resource.memberCount !== undefined) {
+        const trendingIcon = resource.trending ? ' 📈' : '';
         
-        if (categoryId === 'bots') {
-            label = '活跃用户';
-        } else if (resource.subscribers || categoryId === 'channels') {
-            // 如果有subscribers字段或者属于频道分类，不显示members
-            membersHtml = '';
-        } else {
-            label = '群成员';
+        let statsText = `${resource.memberCount} 成员`;
+        if (resource.onlineCount !== undefined) {
+            statsText += ` 💬${resource.onlineCount} 在线`;
+        }
+        if (trendingIcon) {
+            statsText += ` 趋势${trendingIcon}`;
         }
         
-        if (label) {
-            membersHtml = `<div class="resource-stats">👥 ${label}: <span class="stats-number">${resource.members}</span></div>`;
-        }
+        membersHtml = `<div class="resource-stats">${statsText}</div>`;
+    }
+    
+    // 构建机器人月活跃用户信息 - 直接显示实际数字
+    let monthlyUsersHtml = '';
+    if (resource.monthlyUsers !== undefined) {
+        monthlyUsersHtml = `<div class="resource-stats">📊 月活跃用户: <span class="stats-number">${resource.monthlyUsers}</span></div>`;
     }
     
     card.innerHTML = `
         ${tagsHtml}
         <h3 itemprop="name">${resource.title}</h3>
         <p class="resource-description" itemprop="description">${resource.description}</p>
-        ${resource.subscribers ? `<div class="resource-stats">👥 订阅者: <span class="stats-number">${resource.subscribers}</span></div>` : ''}
+        ${subscribersHtml}
         ${membersHtml}
+        ${monthlyUsersHtml}
         ${resource.username ? `<div class="resource-info">用户名: ${resource.username}</div>` : ''}
         ${resource.contact ? `<div class="resource-info">联系: ${resource.contact}</div>` : ''}
         ${resource.link ? 

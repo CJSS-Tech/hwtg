@@ -1,0 +1,64 @@
+name: Telegram Stats Crawler
+
+on:
+  # 定时任务：每天北京时间凌晨 2:00 执行（UTC 18:00）
+  schedule:
+    - cron: '0 18 * * *'
+  
+  # 允许手动触发
+  workflow_dispatch:
+
+jobs:
+  crawl-and-update:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      
+      - name: Install Playwright
+        run: |
+          pip install playwright
+          playwright install chromium
+          playwright install-deps
+      
+      - name: Run crawler
+        run: |
+          python scripts/crawler_telegram_stats.py
+        continue-on-error: true  # 即使失败也继续，因为部分更新也有价值
+      
+      - name: Check if resources.json changed
+        id: check_changes
+        run: |
+          if git diff --quiet resources.json; then
+            echo "changed=false" >> $GITHUB_OUTPUT
+            echo "No changes detected"
+          else
+            echo "changed=true" >> $GITHUB_OUTPUT
+            echo "Changes detected"
+          fi
+      
+      - name: Commit and push if changed
+        if: steps.check_changes.outputs.changed == 'true'
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add resources.json
+          git add scripts/.crawler_progress.json
+          git commit -m "🤖 自动更新 Telegram 统计数据 - $(date +'%Y-%m-%d %H:%M')"
+          git push
+      
+      - name: Upload crawler log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: crawler-log-${{ github.run_number }}
+          path: crawler.log
+          retention-days: 7
